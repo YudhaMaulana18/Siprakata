@@ -1566,23 +1566,6 @@ flutter run                    <span class="c-cmt"># emulator / perangkat Androi
   </div>
 </section>
 
-<section class="section" id="kontak">
-  <div class="container">
-    <div class="reveal" style="text-align:center;margin-bottom:44px">
-      <span class="section-label">Kontak</span>
-      <h2 class="section-title">Hubungi Kami</h2>
-      <p class="section-desc" style="margin:0 auto">Temukan informasi lebih lanjut, kunjungi repositori, atau laporkan kendala.</p>
-    </div>
-    <div class="roles">
-      <div class="role reveal"><span class="r-icon">🐙</span><h4>GitHub</h4><p><a href="https://github.com/YudhaMaulana18" target="_blank" rel="noopener">@YudhaMaulana18</a></p></div>
-      <div class="role reveal" style="transition-delay:.1s"><span class="r-icon">📦</span><h4>Repositori</h4><p><a href="https://github.com/YudhaMaulana18/Siprakata" target="_blank" rel="noopener">YudhaMaulana18/Siprakata</a></p></div>
-      <div class="role reveal" style="transition-delay:.2s"><span class="r-icon">📸</span><h4>Instagram</h4><p><a href="https://www.instagram.com/yudhamlnaa_" target="_blank" rel="noopener">@yudhamlnaa_</a></p></div>
-      <div class="role reveal" style="transition-delay:.3s"><span class="r-icon">🚩</span><h4>Laporkan Masalah</h4><p><a href="https://github.com/YudhaMaulana18/Siprakata/issues" target="_blank" rel="noopener">GitHub Issues</a></p></div>
-    </div>
-  </div>
-</section>
-
-
 <section class="section" id="download">
   <div class="container">
     <div class="cta reveal">
@@ -1608,6 +1591,22 @@ flutter run                    <span class="c-cmt"># emulator / perangkat Androi
         </a>
       </div>
       <div class="note">versi android · file .apk · rilis 2026 · membutuhkan android 8+</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontak">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">Kontak</span>
+      <h2 class="section-title">Hubungi Kami</h2>
+      <p class="section-desc" style="margin:0 auto">Temukan informasi lebih lanjut, kunjungi repositori, atau laporkan kendala.</p>
+    </div>
+    <div class="roles">
+      <div class="role reveal"><span class="r-icon">🐙</span><h4>GitHub</h4><p><a href="https://github.com/YudhaMaulana18" target="_blank" rel="noopener">@YudhaMaulana18</a></p></div>
+      <div class="role reveal" style="transition-delay:.1s"><span class="r-icon">📦</span><h4>Repositori</h4><p><a href="https://github.com/YudhaMaulana18/Siprakata" target="_blank" rel="noopener">YudhaMaulana18/Siprakata</a></p></div>
+      <div class="role reveal" style="transition-delay:.2s"><span class="r-icon">📸</span><h4>Instagram</h4><p><a href="https://www.instagram.com/yudhamlnaa_" target="_blank" rel="noopener">@yudhamlnaa_</a></p></div>
+      <div class="role reveal" style="transition-delay:.3s"><span class="r-icon">🚩</span><h4>Laporkan Masalah</h4><p><a href="https://github.com/YudhaMaulana18/Siprakata/issues" target="_blank" rel="noopener">GitHub Issues</a></p></div>
     </div>
   </div>
 </section>
