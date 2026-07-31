@@ -1,0 +1,210 @@
+@startuml
+title
+    <b>ERD - SIPRAKATA</b>
+endtitle
+
+!define table(x) class x << (T,#312E81) >>
+!define pk(x) <b><color:#FCD34D>#x</color></b>
+!define fk(x) <color:#4ADE80>x</color>
+
+hide methods
+hide stereotype
+skinparam classAttributeIconSize 0
+skinparam classFontSize 12
+skinparam classAttributeFontSize 10
+skinparam classBorderColor #6366F1
+
+table(users) {
+  pk(id)
+  name
+  email
+  password
+  role_id
+}
+
+table(roles) {
+  pk(id)
+  name
+}
+
+table(permissions) {
+  pk(id)
+  name
+}
+
+table(role_permission) {
+  role_id
+  permission_id
+}
+
+table(role_user) {
+  user_id
+  role_id
+}
+
+table(api_tokens) {
+  pk(id)
+  user_id
+  token
+  name
+  expires_at
+}
+
+table(program_studi) {
+  pk(id)
+  kode_prodi
+  nama_prodi
+}
+
+table(tahun_ajaran) {
+  pk(id)
+  tahun_ajaran
+  semester
+  status
+}
+
+table(ruangan) {
+  pk(id)
+  kode_ruang
+  kapasitas
+}
+
+table(mahasiswa) {
+  pk(id)
+  NIM
+  nama
+  alamat
+  email
+  no_hp
+  jenis_kelamin
+  angkatan
+  status
+  prodi_id
+}
+
+table(dosen) {
+  pk(id)
+  NIDN
+  nama
+  email
+  no_hp
+  jabatan
+  prodi_id
+}
+
+table(matakuliah) {
+  pk(id)
+  kode_mk
+  nama_mk
+  sks
+  semester
+}
+
+table(transaksi_krs) {
+  pk(id)
+  mahasiswa_id
+  matakuliah_id
+  dosen_id
+  tahun_ajaran
+  semester
+  status
+  status_validasi
+  catatan_validasi
+  tgl_validasi
+}
+
+table(jadwal_kuliah) {
+  pk(id)
+  matakuliah_id
+  dosen_id
+  ruangan_id
+  tahun_ajaran_id
+  hari
+  jam_mulai
+  jam_selesai
+}
+
+table(presensi) {
+  pk(id)
+  jadwal_id
+  mahasiswa_id
+  tanggal
+  pertemuan_ke
+  status_hadir
+  keterangan
+}
+
+table(nilai) {
+  pk(id)
+  krs_id
+  nilai_tugas
+  nilai_uts
+  nilai_uas
+  nilai_akhir
+  grade
+}
+
+table(materi_kuliah) {
+  pk(id)
+  jadwal_id
+  pertemuan_ke
+  judul
+  deskripsi
+  file_path
+  link_materi
+}
+
+table(pengumuman) {
+  pk(id)
+  dosen_id
+  jadwal_id
+  judul
+  isi
+  prioritas
+  tgl_posting
+  tgl_kadaluarsa
+}
+
+table(kelayakan_mahasiswa) {
+  pk(id)
+  mahasiswa_id
+  matakuliah_id
+  tahun_ajaran
+  semester
+  kehadiran
+  nilai_tugas
+  keaktifan_diskusi
+  skor_prediksi
+  hasil_prediksi
+  detail_perhitungan
+}
+
+users }o--|| roles : role_id
+users }o--o{ roles : "role_user"
+roles }o--o{ permissions : "role_permission"
+users ||--o{ api_tokens : user_id
+
+program_studi ||--o{ mahasiswa : prodi_id
+program_studi ||--o{ dosen : prodi_id
+
+mahasiswa ||--o{ transaksi_krs : mahasiswa_id
+matakuliah ||--o{ transaksi_krs : matakuliah_id
+dosen ||--o{ transaksi_krs : dosen_id
+transaksi_krs ||--|| nilai : krs_id (1:1)
+
+matakuliah ||--o{ jadwal_kuliah : matakuliah_id
+dosen ||--o{ jadwal_kuliah : dosen_id
+ruangan ||--o{ jadwal_kuliah : ruangan_id
+tahun_ajaran ||--o{ jadwal_kuliah : tahun_ajaran_id
+
+jadwal_kuliah ||--o{ presensi : jadwal_id
+mahasiswa ||--o{ presensi : mahasiswa_id
+jadwal_kuliah ||--o{ materi_kuliah : jadwal_id
+
+dosen ||--o{ pengumuman : dosen_id
+jadwal_kuliah ||--o{ pengumuman : jadwal_id
+
+mahasiswa ||--o{ kelayakan_mahasiswa : mahasiswa_id
+matakuliah ||--o{ kelayakan_mahasiswa : matakuliah_id
+
+@enduml

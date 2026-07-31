@@ -1,0 +1,87 @@
+@startuml
+title
+    <b>Sequence Diagram - Sistem Informasi Praktikum & Kelayakan Akademik (SIPRAKATA)</b>
+endtitle
+
+actor "Mahasiswa" as M
+participant "Aplikasi\nFlutter" as App
+participant "Server\n(Laravel API)" as S
+database "Database" as DB
+actor "Dosen" as D
+actor "Admin" as A
+
+M -> App : Buka aplikasi
+M -> App : Isi email & password
+App -> S : POST /api/login (email, password)
+S -> DB : Cari user by email
+DB --> S : Data user
+alt Email / password salah
+    S --> App : 401 "Email atau password salah."
+else Bukan akun mahasiswa
+    S --> App : 403 "Aplikasi hanya untuk akun mahasiswa."
+else Sukses
+    S -> DB : Simpan token API (api_tokens)
+    DB --> S : Token tersimpan
+    S --> App : 200 { token, user }
+    App --> M : Tampilkan Dashboard
+end
+
+M -> App : Ambil KRS
+App -> S : GET /api/krs (Bearer token)
+S -> DB : Ambil KRS mahasiswa
+DB --> S : Daftar KRS
+S --> App : Data KRS + status validasi
+App --> M : Tampilkan daftar KRS
+
+M -> App : Pilih mata kuliah
+App -> S : POST /api/krs { matakuliah_id, tahun_ajaran, semester }
+S -> DB : Cek duplikat (krs_unique)
+alt Duplikat / SKS penuh
+    S --> App : Error (MK duplikat)
+    App --> M : Tampilkan pesan error
+else Valid
+    S -> DB : Simpan KRS (status_validasi = pending)
+    DB --> S : KRS tersimpan
+    S --> App : 200 KRS tersimpan
+    App --> M : "KRS pending menunggu validasi"
+end
+
+D -> S : GET /krs/{id}/validasi (Web)
+S -> DB : Ambil KRS pending
+DB --> S : Data KRS
+D -> S : PUT /krs/{id}/proses-validasi { status_validasi, catatan }
+S -> DB : Update status (disetujui / ditolak)
+DB --> S : Status terupdate
+S --> D : Berhasil divalidasi
+
+M -> App : Lihat jadwal / materi / nilai / presensi / pengumuman
+App -> S : GET /api/{jadwal|materi|nilai|presensi|pengumuman}
+S -> DB : Ambil data
+DB --> S : Data
+S --> App : Data terkait
+App --> M : Tampilkan konten
+
+A -> App : Buka menu Prediksi Kelayakan (Web)
+App -> S : POST /api/kelayakan/proses { mahasiswa, matakuliah }
+S -> DB : Cek KRS disetujui
+alt KRS belum disetujui
+    DB --> S : Tidak ada
+    S --> App : Error "KRS belum disetujui"
+else KRS disetujui
+    DB --> S : Data KRS valid
+    S -> S : Fuzzy Logic Service\n(fuzzifikasi kehadiran/tugas/diskusi)
+    S -> S : Inferensi 27 rule Mamdani\n(defuzzifikasi weighted average)
+    S -> DB : Simpan kelayakan_mahasiswa (skor & hasil)
+    DB --> S : Tersimpan
+    S --> App : { skor, hasil }\n(>= 60 lulus, >= 40 cukup, else tidak lulus)
+    App --> A : Tampilkan detail perhitungan
+end
+
+M -> App : Logout
+App -> S : POST /api/logout (Bearer token)
+S -> DB : Hapus token
+DB --> S : Token dihapus
+S --> App : 200 "Logout berhasil."
+App --> M : Kembali ke halaman Login
+
+@enduml

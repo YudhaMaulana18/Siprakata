@@ -1,0 +1,112 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+
+actor "Admin" as Admin
+actor "Dosen" as Dosen
+actor "Mahasiswa" as Mahasiswa
+
+rectangle "SIPRAKATA" {
+
+  usecase "Login" as UC1
+  usecase "Logout" as UC2
+
+  '=====================
+  ' Fitur Admin
+  '=====================
+  usecase "Kelola Mahasiswa" as UC3
+  usecase "Kelola Dosen" as UC4
+  usecase "Kelola Program Studi" as UC5
+  usecase "Kelola Mata Kuliah" as UC6
+  usecase "Kelola Ruangan" as UC7
+  usecase "Kelola Tahun Ajaran" as UC8
+  usecase "Kelola Jadwal Kuliah" as UC9
+  usecase "Kelola Hak Akses" as UC10
+  usecase "Kelola Presensi" as UC11
+  usecase "Kelola Materi Kuliah" as UC12
+  usecase "Kelola Pengumuman" as UC13
+  usecase "Validasi KRS" as UC14
+  usecase "Kelola Nilai" as UC15
+  usecase "Melihat Hasil Prediksi Kelayakan" as UC16
+
+  '=====================
+  ' Fitur Dosen
+  '=====================
+  usecase "Kelola Jadwal Mengajar" as UC17
+  usecase "Input Presensi" as UC18
+  usecase "Input Nilai" as UC19
+  usecase "Upload Materi Kuliah" as UC20
+  usecase "Kelola Pengumuman" as UC21
+
+  '=====================
+  ' Fitur Mahasiswa (Mobile)
+  '=====================
+  usecase "Mengambil KRS" as UC22
+  usecase "Melihat Jadwal" as UC23
+  usecase "Melihat Materi" as UC24
+  usecase "Mengunduh Materi" as UC25
+  usecase "Melihat Nilai" as UC26
+  usecase "Melihat Pengumuman" as UC27
+  usecase "Melihat Presensi" as UC28
+  usecase "Evaluasi Prediksi Kelayakan" as UC29
+
+  '=====================
+  ' Sistem
+  '=====================
+  usecase "Proses Perhitungan Fuzzy Mamdani" as UC30
+}
+
+'=====================
+' Admin
+'=====================
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+Admin --> UC4
+Admin --> UC5
+Admin --> UC6
+Admin --> UC7
+Admin --> UC8
+Admin --> UC9
+Admin --> UC10
+Admin --> UC11
+Admin --> UC12
+Admin --> UC13
+Admin --> UC14
+Admin --> UC15
+Admin --> UC16
+
+'=====================
+' Dosen
+'=====================
+Dosen --> UC1
+Dosen --> UC2
+Dosen --> UC17
+Dosen --> UC18
+Dosen --> UC19
+Dosen --> UC20
+Dosen --> UC21
+
+'=====================
+' Mahasiswa
+'=====================
+Mahasiswa --> UC1
+Mahasiswa --> UC2
+Mahasiswa --> UC22
+Mahasiswa --> UC23
+Mahasiswa --> UC24
+Mahasiswa --> UC25
+Mahasiswa --> UC26
+Mahasiswa --> UC27
+Mahasiswa --> UC28
+Mahasiswa --> UC29
+
+'=====================
+' Include Relationship
+'=====================
+UC25 .> UC24 : <<include>>
+UC29 .> UC30 : <<include>>
+UC16 .> UC30 : <<include>>
+
+@enduml

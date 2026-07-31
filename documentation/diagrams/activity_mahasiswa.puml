@@ -1,0 +1,73 @@
+@startuml
+title
+    <b>Activity Diagram - Mahasiswa (Mobile)</b>
+    Alur lengkap dari Login sampai Logout
+endtitle
+
+|Mahasiswa|
+start
+:Buka aplikasi SIPRAKATA;
+:Login (email & password);
+
+|Sistem|
+if (Kredensial valid
+& role = mahasiswa?) then (tidak)
+    :Tampilkan pesan error;
+    stop
+else (ya)
+endif
+:Membuat token API;
+
+|Mahasiswa|
+:Dashboard Mahasiswa;
+:Mengambil KRS
+(pilih MK, tahun ajaran, semester);
+
+|Sistem|
+if (KRS valid & tidak duplikat?) then (tidak)
+    :Pesan error
+    (MK duplikat / SKS penuh);
+    stop
+else (ya)
+endif
+:KRS tersimpan dengan
+status "pending";
+
+|Dosen (Web)|
+:Validasi KRS
+(disetujui / ditolak);
+
+|Mahasiswa|
+if (KRS disetujui?) then (tidak)
+    :Melihat catatan penolakan,
+    mengajukan ulang;
+else (ya)
+endif
+
+|Mahasiswa|
+:Melihat jadwal, materi, nilai,
+presensi, pengumuman;
+
+|Sistem|
+:Evaluasi prediksi kelayakan
+(fuzzy Mamdani):
+kehadiran, nilai_tugas, keaktifan;
+:Fuzzifikasi -> 27 rule -> defuzzifikasi;
+
+if (Skor >= 60?) then (ya)
+    :Hasil: LULUS;
+else (tidak)
+    if (Skor >= 40?) then (ya)
+        :Hasil: CUKUP;
+    else (tidak)
+        :Hasil: TIDAK LULUS;
+    endif
+endif
+:Simpan hasil & tampilkan detail;
+
+|Mahasiswa|
+:Logout (hapus token);
+
+stop
+
+@enduml

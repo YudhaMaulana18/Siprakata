@@ -1,0 +1,82 @@
+@startuml
+title
+    <b>Activity Diagram - Admin & Dosen (Panel Web)</b>
+endtitle
+
+|Admin|
+start
+:Login panel web;
+if (Kredensial valid?) then (ya)
+    :Dashboard Admin;
+else (tidak)
+    :Tampilkan error;
+    stop
+endif
+if (Kelola master data?) then (ya)
+    fork
+        :Prodi;
+    fork again
+        :Tahun Ajaran;
+    fork again
+        :Ruangan;
+    end fork
+endif
+if (Kelola pengguna?) then (ya)
+    fork
+        :CRUD Mahasiswa;
+    fork again
+        :CRUD Dosen;
+    fork again
+        :CRUD Matakuliah;
+    end fork
+endif
+if (Kelola RBAC?) then (ya)
+    :Atur Roles & Permissions;
+    :Atur User Roles;
+endif
+:Monitoring & Evaluasi;
+if (Lihat hasil kelayakan?) then (ya)
+    :Lihat hasil evaluasi\nFuzzy semua mahasiswa;
+endif
+:Logout;
+stop
+
+|Dosen|
+start
+:Login panel web;
+if (Kredensial valid?) then (ya)
+    :Dashboard Dosen;
+else (tidak)
+    :Tampilkan error;
+    stop
+endif
+if (Kelola jadwal?) then (ya)
+    :CRUD Jadwal Mengajar;
+endif
+if (Input presensi?) then (ya)
+    :Pilih jadwal & pertemuan;
+    :Input status hadir\nper mahasiswa;
+endif
+if (Input nilai?) then (ya)
+    :Pilih KRS mahasiswa;
+    :Input nilai tugas, UTS, UAS;
+    :Simpan (akhir & grade\ndihitung otomatis);
+endif
+if (Validasi KRS?) then (ya)
+    :Lihat daftar KRS pending;
+    if (Setujui / tolak?) then (disetujui)
+        :Set status disetujui;
+    else (ditolak)
+        :Set status ditolak + catatan;
+    endif
+endif
+if (Kelola materi?) then (ya)
+    :Unggah materi per pertemuan\n(file atau link);
+endif
+if (Buat pengumuman?) then (ya)
+    :Isi judul, isi, prioritas, tanggal;
+endif
+:Logout;
+stop
+
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+title
+    <b>Arsitektur & Deployment SIPRAKATA</b>
+endtitle
+
+skinparam nodeFontSize 13
+skinparam nodeFontStyle bold
+skinparam componentFontSize 11
+skinparam databaseFontSize 12
+skinparam databaseFontStyle bold
+
+node "Perangkat Admin" as ADM {
+  [Browser Admin\n(Chrome/Edge)]
+}
+
+node "Perangkat Dosen" as DOS {
+  [Browser Dosen\n(Chrome/Edge)]
+}
+
+node "Smartphone Mahasiswa" as MHS {
+  [Aplikasi Flutter\nSIPRAKATA Mobile\n(Android 8+)]
+}
+
+node "Layanan Tunnel" as NGROK {
+  [ngrok\n(baseUrl HTTPS)]
+}
+
+node "Server Web (Laragon/Localhost)" as SERVER {
+  database "MySQL Database\nlaravelyudha" as DB
+  folder "Backend Laravel 11" as LAR {
+    [Auth API\nlogin/logout/me]
+    [KRS API\najukan & validasi]
+    [Data API\njadwal/presensi/nilai/\nmateri/pengumuman]
+    [FuzzyLogicService\nfuzzifikasi - 27 rule\nMamdani - defuzzifikasi]
+    [Web Panel\nAdmin & Dosen\n(RBAC)]
+    [Landing Page\n+ Dokumentasi]
+  }
+}
+
+ADM --> SERVER : HTTP (localhost)
+DOS --> SERVER : HTTP (localhost)
+MHS --> NGROK : HTTPS request\nBearer Token
+NGROK --> SERVER : Tunnel ke localhost (port 8000)
+LAR --> DB : Eloquent ORM
+
+@enduml

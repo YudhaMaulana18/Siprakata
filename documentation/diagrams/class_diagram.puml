@@ -1,0 +1,211 @@
+@startuml
+title
+    <b>Class Diagram - SIPRAKATA</b>
+endtitle
+
+skinparam classAttributeIconSize 0
+skinparam classFontSize 12
+skinparam classFontStyle bold
+skinparam classAttributeFontSize 10
+skinparam classAttributeFontStyle plain
+skinparam classHeaderBackgroundColor #312E81
+skinparam classHeaderFontColor white
+skinparam classBackgroundColor #1E1B4B
+skinparam classFontColor #E5E7EB
+skinparam classAttributeFontColor #C7D2FE
+skinparam classBorderColor #6366F1
+
+class User {
+  + id : bigint
+  + name : string
+  + email : string
+  + password : string
+  + role_id : bigint
+  --
+  + hasRole(role) : bool
+  + hasPermission(perm) : bool
+  + isAdmin() : bool
+  + isDosen() : bool
+  + isMahasiswa() : bool
+  + createApiToken(name) : ApiToken
+}
+
+class Role {
+  + id : bigint
+  + name : string
+}
+
+class Permission {
+  + id : bigint
+  + name : string
+}
+
+class ApiToken {
+  + id : bigint
+  + user_id : bigint
+  + token : string
+  + name : string
+  + expires_at : timestamp
+}
+
+class Mahasiswa {
+  + id : bigint
+  + NIM : string
+  + nama : string
+  + alamat : string
+  + email : string
+  + no_hp : string
+  + jenis_kelamin : enum
+  + angkatan : year
+  + status : enum
+  + prodi_id : bigint
+}
+
+class Dosen {
+  + id : bigint
+  + NIDN : string
+  + nama : string
+  + email : string
+  + no_hp : string
+  + jabatan : string
+  + prodi_id : bigint
+}
+
+class ProgramStudi {
+  + id : bigint
+  + kode_prodi : string
+  + nama_prodi : string
+}
+
+class TahunAjaran {
+  + id : bigint
+  + tahun_ajaran : string
+  + semester : string
+  + status : enum
+}
+
+class Ruangan {
+  + id : bigint
+  + kode_ruang : string
+  + kapasitas : integer
+}
+
+class Matakuliah {
+  + id : bigint
+  + kode_mk : string
+  + nama_mk : string
+  + sks : integer
+  + semester : integer
+}
+
+class TransaksiKrs {
+  + id : bigint
+  + mahasiswa_id : bigint
+  + matakuliah_id : bigint
+  + dosen_id : bigint
+  + tahun_ajaran : string
+  + semester : string
+  + status : string
+  + status_validasi : enum
+  + catatan_validasi : text
+  + tgl_validasi : date
+  --
+  + mahasiswa() : Mahasiswa
+  + matakuliah() : Matakuliah
+  + dosen() : Dosen
+  + nilai() : Nilai
+}
+
+class JadwalKuliah {
+  + id : bigint
+  + matakuliah_id : bigint
+  + dosen_id : bigint
+  + ruangan_id : bigint
+  + tahun_ajaran_id : bigint
+  + hari : enum
+  + jam_mulai : time
+  + jam_selesai : time
+}
+
+class Presensi {
+  + id : bigint
+  + jadwal_id : bigint
+  + mahasiswa_id : bigint
+  + tanggal : date
+  + pertemuan_ke : integer
+  + status_hadir : enum
+  + keterangan : text
+}
+
+class Nilai {
+  + id : bigint
+  + krs_id : bigint
+  + nilai_tugas : decimal
+  + nilai_uts : decimal
+  + nilai_uas : decimal
+  + nilai_akhir : decimal
+  + grade : string
+  --
+  + booted() : void (auto-hitung akhir & grade)
+}
+
+class MateriKuliah {
+  + id : bigint
+  + jadwal_id : bigint
+  + pertemuan_ke : integer
+  + judul : string
+  + deskripsi : text
+  + file_path : string
+  + link_materi : string
+}
+
+class Pengumuman {
+  + id : bigint
+  + dosen_id : bigint
+  + jadwal_id : bigint
+  + judul : string
+  + isi : text
+  + prioritas : enum
+  + tgl_posting : date
+  + tgl_kadaluarsa : date
+}
+
+class Kelayakan {
+  + id : bigint
+  + mahasiswa_id : bigint
+  + matakuliah_id : bigint
+  + tahun_ajaran : string
+  + semester : string
+  + kehadiran : float
+  + nilai_tugas : float
+  + keaktifan_diskusi : float
+  + skor_prediksi : float
+  + hasil_prediksi : string
+  + detail_perhitungan : json
+}
+
+User "1" o-- "0..*" ApiToken : apiTokens()
+User "1" --> "1" Role : role()
+User "*" --> "*" Role : roles()
+Role "*" --> "*" Permission : permissions()
+Mahasiswa "1" --> "1" User : user()
+Dosen "1" --> "1" User : user()
+Mahasiswa "*" --> "1" ProgramStudi : prodi()
+Dosen "*" --> "1" ProgramStudi : prodi()
+TransaksiKrs "*" --> "1" Mahasiswa : mahasiswa()
+TransaksiKrs "*" --> "1" Matakuliah : matakuliah()
+TransaksiKrs "*" --> "1" Dosen : dosen()
+TransaksiKrs "1" --> "0..1" Nilai : nilai()
+JadwalKuliah "*" --> "1" Matakuliah : matakuliah()
+JadwalKuliah "*" --> "1" Dosen : dosen()
+JadwalKuliah "*" --> "1" Ruangan : ruangan()
+JadwalKuliah "*" --> "1" TahunAjaran : tahunAjaran()
+Presensi "*" --> "1" JadwalKuliah : jadwal()
+Presensi "*" --> "1" Mahasiswa : mahasiswa()
+MateriKuliah "*" --> "1" JadwalKuliah : jadwal()
+Pengumuman "*" --> "1" Dosen : dosen()
+Pengumuman "*" --> "1" JadwalKuliah : jadwal()
+Kelayakan "*" --> "1" Mahasiswa : mahasiswa()
+Kelayakan "*" --> "1" Matakuliah : matakuliah()
+
+@enduml

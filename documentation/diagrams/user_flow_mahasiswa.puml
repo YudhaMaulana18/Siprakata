@@ -1,0 +1,41 @@
+@startuml
+title
+    <b>User Flow - Aplikasi Mobile SIPRAKATA (Mahasiswa)</b>
+endtitle
+
+start
+
+:Splash Screen;
+:Login Screen\n(email & password);
+if (Kredensial valid\n& akun mahasiswa?) then (ya)
+    :POST /api/login → simpan token;
+else (tidak)
+    :Tampilkan error (401/403);
+    :Login Screen; <<#LightYellow>>
+    stop
+endif
+
+:HomeScreen (Dashboard);
+switch (Pilih menu)
+case (KRS)
+    if (Status validasi?) then (pending)
+        :Tambah KRS → validasi Dosen;
+    else (disetujui / ditolak)
+        :Lihat status validasi & nilai;
+    endif
+case (Jadwal / Presensi / Nilai /\nMateri / Pengumuman)
+    :Lihat data terkait\n(unduh materi bila ada file);
+case (Prediksi Kelayakan)
+    :Proses analisis → tampilkan\nhasil (lulus / cukup / tidak lulus);
+endswitch
+
+if (Keluar?) then (ya)
+    :Konfirmasi logout → hapus token;
+    :Login Screen (login ulang); <<#LightYellow>>
+else (tidak)
+    :HomeScreen (Dashboard); <<#LightBlue>>
+endif
+
+stop
+
+@enduml

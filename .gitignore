@@ -1,0 +1,49 @@
+# ── Umum ──
+*.log
+.DS_Store
+Thumbs.db
+cookies.txt
+
+# ── Backend Laravel (siprakata/) ──
+.env
+.env.backup
+.env.production
+.phpunit.result.cache
+/.phpunit.cache
+/vendor
+/node_modules
+/public/build
+/public/hot
+/public/storage
+/storage/*.key
+/storage/pail
+_ide_helper.php
+auth.json
+Homestead.json
+Homestead.yaml
+
+# ── IDE / editor ──
+/.cursor/
+/.idea
+/.nova
+/.vscode
+/.zed
+
+# ── Flutter (flutter_siprakata/) ──
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+flutter_siprakata/build/
+flutter_siprakata/.dart_tool/
+
+# ── Artefak build & file internal ──
+siprakata/public/siprakata.apk
+siprakata/public/flutter/
+siprakata/public/force-v2.php
+siprakata/public/test.php
+siprakata/force.php
+flutter_siprakata/lib.zip
+siprakata/storage/framework/views/*.php
+siprakata/database/database.sqlite
