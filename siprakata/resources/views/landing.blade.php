@@ -450,6 +450,45 @@
     overflow-x:auto; color:#4ade80; line-height:1.8;
   }
   .cmd-block pre .c-cmt{ color:rgba(235,229,240,.3); }
+
+  .role a{ color:#818CF8; text-decoration:none; font-weight:600; }
+  .role a:hover{ text-decoration:underline; }
+
+  /* ─── FAQ ─── */
+  .faq{ max-width:720px; margin:0 auto; }
+  .faq details{
+    background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
+    border-radius:14px; margin-bottom:12px; overflow:hidden; transition:border-color .3s,background .3s;
+  }
+  .faq details[open]{ border-color:rgba(99,102,241,.35); background:rgba(99,102,241,.03); }
+  .faq summary{
+    cursor:pointer; list-style:none; padding:18px 22px; font-size:14.5px; font-weight:600;
+    display:flex; align-items:center; justify-content:space-between; gap:14px; color:#ebe5f0;
+  }
+  .faq summary::-webkit-details-marker{ display:none; }
+  .faq summary .chev{ color:rgba(235,229,240,.35); font-size:12px; font-family:'JetBrains Mono',monospace; transition:transform .3s; flex-shrink:0; }
+  .faq details[open] summary .chev{ transform:rotate(90deg); color:#818CF8; }
+  .faq .faq-a{ padding:0 22px 20px; font-size:13.5px; color:rgba(235,229,240,.55); line-height:1.75; }
+  .faq .faq-a code{ font-family:'JetBrains Mono',monospace; font-size:12px; color:#A5B4FC; background:rgba(99,102,241,.1); padding:2px 7px; border-radius:5px; }
+
+  /* ─── Lisensi ─── */
+  .license-box{
+    max-width:760px; margin:0 auto;
+    background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
+    border-radius:20px; padding:36px;
+  }
+  .license-box .lic-head{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+  .license-box .lic-badge{
+    font-family:'JetBrains Mono',monospace; font-size:14px; font-weight:800;
+    padding:8px 18px; border-radius:10px;
+    background:rgba(34,197,94,.12); color:#4ade80; border:1px solid rgba(34,197,94,.25);
+  }
+  .license-box .lic-name{ font-family:'Plus Jakarta Sans',sans-serif; font-size:18px; font-weight:800; }
+  .license-box p{ font-size:13.5px; color:rgba(235,229,240,.55); line-height:1.75; margin-bottom:12px; }
+  .license-box ul{ padding-left:20px; margin-bottom:12px; }
+  .license-box li{ font-size:13px; color:rgba(235,229,240,.5); line-height:1.75; margin-bottom:6px; }
+  .license-box a{ color:#818CF8; text-decoration:none; }
+  .license-box a:hover{ text-decoration:underline; }
 </style>
 </head>
 <body>
@@ -468,6 +507,8 @@
       <a href="#fitur" onclick="closeNav()">Fitur</a>
       <a href="#tech" onclick="closeNav()">Teknologi</a>
       <a href="#dokumentasi" onclick="closeNav()">Dokumentasi</a>
+      <a href="#faq" onclick="closeNav()">FAQ</a>
+      <a href="#kontak" onclick="closeNav()">Kontak</a>
       <a href="#download" onclick="closeNav()">Download</a>
       <a href="https://github.com/YudhaMaulana18/Siprakata" target="_blank" rel="noopener" class="btn-github">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 007.86 10.91c.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.57-.29-5.27-1.28-5.27-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 015.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.71 5.41-5.29 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0023.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
@@ -579,6 +620,28 @@
       <div class="role"><span class="r-icon">👨‍🏫</span><h4>Dosen (Web)</h4><p>Presensi, nilai, validasi KRS, materi kuliah, pengumuman</p></div>
       <div class="role"><span class="r-icon">🎓</span><h4>Mahasiswa (Mobile)</h4><p>Dashboard, KRS, jadwal, nilai, presensi, materi, fuzzy eval</p></div>
     </div>
+    <div class="preview-grid reveal" style="margin-top:40px">
+      <div class="preview-card">
+        <span class="p-icon">📜</span>
+        <h3>Latar Belakang</h3>
+        <p>Layanan akademik sering berjalan manual dan terpisah-pisah: KRS antre di kampus, presensi kertas, nilai menunggu pengumuman. SIPRAKATA menyatukan semuanya dalam satu platform digital yang bisa diakses kapan saja.</p>
+      </div>
+      <div class="preview-card">
+        <span class="p-icon">🎯</span>
+        <h3>Tujuan</h3>
+        <p>Menghadirkan layanan akademik online yang cepat, terintegrasi, dan mudah digunakan — dari pengajuan KRS, presensi, nilai, materi, hingga evaluasi kelayakan semester berbasis Fuzzy Logic Mamdani.</p>
+      </div>
+      <div class="preview-card">
+        <span class="p-icon">👥</span>
+        <h3>Target Pengguna</h3>
+        <p>Mahasiswa memakai aplikasi mobile; Dosen memakai panel web untuk presensi, nilai, validasi KRS, materi & pengumuman; Admin mengelola master data, RBAC, dan log aktivitas.</p>
+      </div>
+      <div class="preview-card">
+        <span class="p-icon">✅</span>
+        <h3>Manfaat Utama</h3>
+        <p>Mengurangi antrean dan pekerjaan manual, data akademik terpusat dalam satu sumber, keputusan kelayakan lebih objektif lewat fuzzy logic, serta monitoring real-time bagi dosen dan admin.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -598,6 +661,30 @@
       <div class="feat reveal" style="transition-delay:.25s"><span class="f-icon">📄</span><div><div class="f-txt">Materi Kuliah</div><div class="f-sub">Download file materi & link tiap pertemuan</div></div></div>
       <div class="feat reveal" style="transition-delay:.3s"><span class="f-icon">🧠</span><div><div class="f-txt">Fuzzy Mamdani</div><div class="f-sub">Prediksi kelulusan — 27 rules, 3 input variabel</div></div></div>
       <div class="feat reveal" style="transition-delay:.35s"><span class="f-icon">📢</span><div><div class="f-txt">Pengumuman</div><div class="f-sub">Info terkini dari dosen per kelas</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="keunggulan">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">Keunggulan</span>
+      <h2 class="section-title">Mengapa Memilih SIPRAKATA?</h2>
+      <p class="section-desc" style="margin:0 auto">Empat pilar utama yang membedakan SIPRAKATA dari sistem akademik konvensional.</p>
+    </div>
+    <div class="reveal">
+      <div class="stats" style="margin-bottom:44px">
+        <div class="stat"><div class="num" data-to="19">0</div><div class="lbl">Tabel Database</div></div>
+        <div class="stat"><div class="num" data-to="82">0</div><div class="lbl">Route API</div></div>
+        <div class="stat"><div class="num" data-to="27">0</div><div class="lbl">Rule Fuzzy Mamdani</div></div>
+        <div class="stat"><div class="num" data-to="16">0</div><div class="lbl">Kasus Uji Tervalidasi</div></div>
+      </div>
+    </div>
+    <div class="roles">
+      <div class="role reveal"><span class="r-icon">🚀</span><h4>Cepat &amp; Ringan</h4><p>Aplikasi Flutter release AOT + API JSON ringan — responsif bahkan di ponsel kelas menengah.</p></div>
+      <div class="role reveal" style="transition-delay:.1s"><span class="r-icon">🛡️</span><h4>Keamanan Berlapis</h4><p>Autentikasi token, RBAC granular per modul, dan password ter-hash di setiap sesi.</p></div>
+      <div class="role reveal" style="transition-delay:.2s"><span class="r-icon">🧠</span><h4>Keputusan Objektif</h4><p>Evaluasi kelayakan via Fuzzy Mamdani 27 rules — konsisten, transparan, dan bisa dilacak.</p></div>
+      <div class="role reveal" style="transition-delay:.3s"><span class="r-icon">🔗</span><h4>Terintegrasi</h4><p>Satu database terpusat menghubungkan mahasiswa, dosen, dan admin dalam satu alur.</p></div>
     </div>
   </div>
 </section>
@@ -640,6 +727,27 @@
         <h4>Monitoring & Evaluasi</h4>
         <p>Pantau KRS, presensi, nilai, dan hasil evaluasi kelayakan</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="modul">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">Modul</span>
+      <h2 class="section-title">Modul Sistem</h2>
+      <p class="section-desc" style="margin:0 auto">Sembilan modul yang saling terhubung — diatur lewat RBAC agar setiap peran hanya mengakses haknya.</p>
+    </div>
+    <div class="db-grid">
+      <div class="db-card reveal"><div class="db-name">Autentikasi &amp; RBAC</div><div class="db-desc">Login multi-peran (Admin, Dosen, Mahasiswa) dengan permission granular per modul.</div><div class="db-fields"><span class="db-field">Token Bearer</span><span class="db-field">Role &amp; Permission</span></div></div>
+      <div class="db-card reveal"><div class="db-name">Master Data</div><div class="db-desc">Kelola mahasiswa, dosen, matakuliah, program studi, ruangan, dan tahun ajaran.</div><div class="db-fields"><span class="db-field">CRUD Admin</span><span class="db-field">6 Entitas</span></div></div>
+      <div class="db-card reveal"><div class="db-name">KRS Online</div><div class="db-desc">Ajukan KRS dari aplikasi, pantau status pending/disetujui/ditolak, dan validasi oleh dosen &amp; admin.</div><div class="db-fields"><span class="db-field">Transaksi</span><span class="db-field">Validasi</span></div></div>
+      <div class="db-card reveal"><div class="db-name">Jadwal Kuliah</div><div class="db-desc">Jadwal harian lengkap dengan dosen dan ruangan per kelas.</div><div class="db-fields"><span class="db-field">Per Kelas</span><span class="db-field">Harian</span></div></div>
+      <div class="db-card reveal"><div class="db-name">Presensi Digital</div><div class="db-desc">Pencatatan kehadiran Hadir, Izin, Sakit, Alpha per pertemuan.</div><div class="db-fields"><span class="db-field">HIS-A</span><span class="db-field">Rekap</span></div></div>
+      <div class="db-card reveal"><div class="db-name">Nilai &amp; Grade</div><div class="db-desc">Bobot Tugas 30% + UTS 30% + UAS 40% dengan grade A&ndash;E.</div><div class="db-fields"><span class="db-field">30/30/40</span><span class="db-field">A&ndash;E</span></div></div>
+      <div class="db-card reveal"><div class="db-name">Materi Kuliah</div><div class="db-desc">Distribusi file materi dan link tiap pertemuan untuk mahasiswa.</div><div class="db-fields"><span class="db-field">Download</span><span class="db-field">Per Pertemuan</span></div></div>
+      <div class="db-card reveal"><div class="db-name">Pengumuman</div><div class="db-desc">Informasi terkini dari dosen per kelas, tersinkron ke aplikasi mobile.</div><div class="db-fields"><span class="db-field">Per Kelas</span></div></div>
+      <div class="db-card reveal"><div class="db-name">Evaluasi Kelayakan</div><div class="db-desc">Fuzzy Logic Mamdani 27 rules dengan 3 variabel input dan output skor kelayakan.</div><div class="db-fields"><span class="db-field">Fuzzy</span><span class="db-field">Batch</span></div></div>
     </div>
   </div>
 </section>
@@ -1313,6 +1421,162 @@ flutter run                    <span class="c-cmt"># emulator / perangkat Androi
           <div class="fr-note">Hasil sistem identik dengan perhitungan manual — memvalidasi kebenaran implementasi fuzzifikasi, inferensi 27 rule, dan defuzzifikasi weighted average (centroid: tidak_lulus=20, cukup=50, lulus=80).</div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kebutuhan">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">Kebutuhan</span>
+      <h2 class="section-title">Kebutuhan Sistem</h2>
+      <p class="section-desc" style="margin:0 auto">Persyaratan minimum agar SIPRAKATA berjalan lancar — baik sebagai pengguna maupun sebagai server.</p>
+    </div>
+    <div class="stack-table-wrap reveal">
+      <table class="stack-table" style="min-width:680px">
+        <thead>
+          <tr><th>Komponen</th><th>Kebutuhan Minimum</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Perangkat Mahasiswa</td><td>Android 8.0+ &middot; RAM 2 GB &middot; ruang penyimpanan &plusmn;50 MB &middot; koneksi internet stabil</td></tr>
+          <tr><td>Perangkat Dosen / Admin</td><td>Browser modern (Chrome, Edge, Firefox, Safari) &middot; akses internet &middot; resolusi layar min. 1024&times;768</td></tr>
+          <tr><td>Server Backend</td><td>PHP 8.3+ &middot; MySQL 8.0+ / MariaDB 10.6+ &middot; Composer 2 &middot; Laravel 13 &middot; Apache / Nginx &middot; HTTPS</td></tr>
+          <tr><td>Pengembangan (Opsional)</td><td>Flutter 3 SDK + Dart &middot; Android SDK &middot; Git &middot; Node.js 18+ (Vercel CLI untuk deploy panel web)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="keamanan">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">Keamanan</span>
+      <h2 class="section-title">Keamanan Terjamin</h2>
+      <p class="section-desc" style="margin:0 auto">Data akademik dilindungi berlapis — dari sisi autentikasi hingga penyimpanan.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feat reveal"><span class="f-icon">🔐</span><div><div class="f-txt">Autentikasi Token</div><div class="f-sub">Setiap request API diverifikasi token Bearer — sesi aman dan bisa dicabut</div></div></div>
+      <div class="feat reveal" style="transition-delay:.05s"><span class="f-icon">🛡️</span><div><div class="f-txt">RBAC Granular</div><div class="f-sub">Peran Admin, Dosen, Mahasiswa dengan permission per modul</div></div></div>
+      <div class="feat reveal" style="transition-delay:.1s"><span class="f-icon">🔑</span><div><div class="f-txt">Password Ter-Hash</div><div class="f-sub">Kredensial disimpan dengan bcrypt, tidak pernah plain-text</div></div></div>
+      <div class="feat reveal" style="transition-delay:.15s"><span class="f-icon">🧱</span><div><div class="f-txt">Middleware Proteksi</div><div class="f-sub">api.auth &amp; api.role memfilter akses sebelum masuk controller</div></div></div>
+      <div class="feat reveal" style="transition-delay:.2s"><span class="f-icon">🧼</span><div><div class="f-txt">Aman dari Injeksi</div><div class="f-sub">Eloquent ORM + query binding mencegah SQL injection</div></div></div>
+      <div class="feat reveal" style="transition-delay:.25s"><span class="f-icon">🖥️</span><div><div class="f-txt">Web Terlindungi</div><div class="f-sub">CSRF protection dan validasi input untuk panel web Laravel</div></div></div>
+      <div class="feat reveal" style="transition-delay:.3s"><span class="f-icon">🔒</span><div><div class="f-txt">Tanpa Secret di Repo</div><div class="f-sub">Konfigurasi rahasia via environment (.env), tidak pernah di-commit</div></div></div>
+      <div class="feat reveal" style="transition-delay:.35s"><span class="f-icon">📦</span><div><div class="f-txt">APK Rilis Resmi</div><div class="f-sub">APK dari build resmi Flutter — tanpa sumber pihak ketiga</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="performa">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">Performa</span>
+      <h2 class="section-title">Performa Optimal</h2>
+      <p class="section-desc" style="margin:0 auto">Didesain hemat sumber daya tanpa mengorbankan pengalaman pengguna.</p>
+    </div>
+    <div class="roles">
+      <div class="role reveal"><span class="r-icon">⚡</span><h4>Startup Cepat</h4><p>Flutter release AOT — aplikasi terbuka dalam hitungan detik tanpa interpreter.</p></div>
+      <div class="role reveal" style="transition-delay:.1s"><span class="r-icon">🚀</span><h4>API Ringan</h4><p>Response REST JSON tanpa beban HTML — hemat kuota, data, dan baterai.</p></div>
+      <div class="role reveal" style="transition-delay:.2s"><span class="r-icon">🧩</span><h4>Query Optimal</h4><p>Eager loading mencegah N+1 pada daftar KRS, jadwal, presensi, dan nilai.</p></div>
+      <div class="role reveal" style="transition-delay:.3s"><span class="r-icon">📊</span><h4>Fuzzy Instan</h4><p>27 rule inferensi Mamdani berjalan cepat bahkan untuk evaluasi batch.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="studi-kasus">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">Studi Kasus</span>
+      <h2 class="section-title">Evaluasi Kelayakan Fuzzy Mamdani</h2>
+      <p class="section-desc" style="margin:0 auto">Ilustrasi nyata bagaimana sistem menilai kelayakan semester seorang mahasiswa.</p>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card reveal">
+        <span class="g-role">SKENARIO</span>
+        <h4>Mahasiswa Mengajukan KRS</h4>
+        <ol>
+          <li><strong>Mahasiswa semester 3</strong> mengajukan KRS dari aplikasi mobile.</li>
+          <li><strong>Input evaluasi</strong>: kehadiran 85%, nilai tugas 78, keaktifan diskusi 90.</li>
+          <li>Sistem memanggil endpoint kelayakan untuk menilai kesiapan semester.</li>
+        </ol>
+      </div>
+      <div class="guide-card reveal" style="transition-delay:.1s">
+        <span class="g-role">PENYELESAIAN</span>
+        <h4>Inferensi Fuzzy Mamdani</h4>
+        <ol>
+          <li><strong>Fuzzifikasi</strong> tiap variabel ke himpunan fuzzy (rendah/sedang/tinggi).</li>
+          <li><strong>27 rules</strong> dikombinasikan dengan operator AND &rarr; derajat keanggotaan.</li>
+          <li><strong>Defuzzifikasi</strong> metode centroid/weighted average menghasilkan skor akhir.</li>
+        </ol>
+      </div>
+      <div class="guide-card reveal" style="transition-delay:.2s">
+        <span class="g-role">HASIL &amp; EVALUASI</span>
+        <h4>Layak &amp; Tervalidasi</h4>
+        <ol>
+          <li><strong>Skor kelayakan</strong> di atas ambang &rarr; status <strong>Layak</strong>.</li>
+          <li>Dosen <strong>memvalidasi KRS</strong> di panel web (Setuju/Tolak + catatan).</li>
+          <li>Perhitungan manual terbukti identik dengan sistem &mdash; lihat tab <strong>Pengujian</strong>.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Pertanyaan Umum</h2>
+      <p class="section-desc" style="margin:0 auto">Jawaban singkat atas pertanyaan yang paling sering diajukan.</p>
+    </div>
+    <div class="faq">
+      <details class="reveal"><summary>Apa itu SIPRAKATA? <span class="chev">›</span></summary><div class="faq-a">Sistem Informasi Praktik Akademik — platform terintegrasi untuk layanan akademik kampus: aplikasi mobile untuk mahasiswa dan panel web untuk admin &amp; dosen.</div></details>
+      <details class="reveal"><summary>Bagaimana cara login sebagai mahasiswa? <span class="chev">›</span></summary><div class="faq-a">Buka aplikasi mobile, masukkan akun terdaftar Anda, lalu login. Admin dan dosen login lewat panel web menggunakan tombol <code>Login Admin/Dosen</code>.</div></details>
+      <details class="reveal"><summary>Bagaimana cara mengajukan KRS? <span class="chev">›</span></summary><div class="faq-a">Buka menu <strong>KRS</strong> di aplikasi, pilih matakuliah yang diambil, lalu ajukan. Anda bisa memantau statusnya (pending/disetujui/ditolak) secara real-time.</div></details>
+      <details class="reveal"><summary>Apa arti status KRS saya? <span class="chev">›</span></summary><div class="faq-a"><code>pending</code> berarti menunggu validasi dosen/admin; <code>disetujui</code> berarti KRS diterima; <code>ditolak</code> berarti perlu revisi — lengkap dengan catatan dari validator.</div></details>
+      <details class="reveal"><summary>Apa itu Fuzzy Logic Mamdani? <span class="chev">›</span></summary><div class="faq-a">Metode evaluasi kelayakan yang memproses 3 input (kehadiran, nilai tugas, keaktifan diskusi) melalui 27 rules dan menghasilkan skor kelayakan 0&ndash;1 yang objektif.</div></details>
+      <details class="reveal"><summary>Apakah aplikasi mobile berbayar? <span class="chev">›</span></summary><div class="faq-a">Tidak. Aplikasi gratis — unduh file APK langsung dari tombol <strong>Download</strong> di halaman ini.</div></details>
+      <details class="reveal"><summary>Bagaimana admin/dosen memvalidasi KRS? <span class="chev">›</span></summary><div class="faq-a">Login di panel web, buka menu <strong>Validasi KRS</strong>, pilih pengajuan dengan status pending, lalu klik <strong>Setuju</strong> atau <strong>Tolak</strong> beserta catatan.</div></details>
+      <details class="reveal"><summary>Apakah data akademik saya aman? <span class="chev">›</span></summary><div class="faq-a">Aman. Semua akses dilindungi autentikasi token, otorisasi RBAC per modul, password ter-hash, dan tanpa secret tersimpan di repositori publik.</div></details>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="lisensi">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">Lisensi</span>
+      <h2 class="section-title">Lisensi Aplikasi</h2>
+      <p class="section-desc" style="margin:0 auto">SIPRAKATA dirilis sebagai perangkat lunak sumber terbuka.</p>
+    </div>
+    <div class="license-box reveal">
+      <div class="lic-head">
+        <span class="lic-badge">MIT</span>
+        <span class="lic-name">SIPRAKATA &mdash; Sistem Informasi Praktik Akademik</span>
+      </div>
+      <p>Proyek ini dilisensikan di bawah <a href="https://opensource.org/license/mit" target="_blank" rel="noopener">MIT License</a> — bebas digunakan, dimodifikasi, dan didistribusikan kembali selama salinan lisensi asli disertakan.</p>
+      <ul>
+        <li>Bebas dipakai untuk tujuan apa pun, termasuk komersial.</li>
+        <li>Bebas dimodifikasi dan didistribusikan ulang.</li>
+        <li>Perangkat lunak disediakan "sebagaimana adanya" tanpa jaminan apa pun.</li>
+        <li>Sumber kode lengkap tersedia di <a href="https://github.com/YudhaMaulana18/Siprakata" target="_blank" rel="noopener">github.com/YudhaMaulana18/Siprakata</a>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kontak">
+  <div class="container">
+    <div class="reveal" style="text-align:center;margin-bottom:44px">
+      <span class="section-label">Kontak</span>
+      <h2 class="section-title">Hubungi Kami</h2>
+      <p class="section-desc" style="margin:0 auto">Temukan informasi lebih lanjut, kunjungi repositori, atau laporkan kendala.</p>
+    </div>
+    <div class="roles">
+      <div class="role reveal"><span class="r-icon">🐙</span><h4>GitHub</h4><p><a href="https://github.com/YudhaMaulana18" target="_blank" rel="noopener">@YudhaMaulana18</a></p></div>
+      <div class="role reveal" style="transition-delay:.1s"><span class="r-icon">📦</span><h4>Repositori</h4><p><a href="https://github.com/YudhaMaulana18/Siprakata" target="_blank" rel="noopener">YudhaMaulana18/Siprakata</a></p></div>
+      <div class="role reveal" style="transition-delay:.2s"><span class="r-icon">🚩</span><h4>Laporkan Masalah</h4><p><a href="https://github.com/YudhaMaulana18/Siprakata/issues" target="_blank" rel="noopener">GitHub Issues</a></p></div>
     </div>
   </div>
 </section>
