@@ -134,6 +134,7 @@
     width:400px; height:400px; border-radius:50%;
     background:radial-gradient(circle,rgba(67,56,202,.15),transparent 70%);
     position:absolute; animation:pulseSlow 6s ease-in-out infinite;
+    pointer-events:none;
   }
   @keyframes pulseSlow{ 0%,100%{ transform:scale(1); opacity:.6; } 50%{ transform:scale(1.2); opacity:1; } }
   .hero-box{
@@ -155,6 +156,7 @@
     backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center;
     font-size:22px; animation:float 8s ease-in-out infinite;
     box-shadow:0 8px 32px rgba(0,0,0,.2);
+    pointer-events:none;
   }
   .hero-floating:nth-child(2){ top:-20px; right:-30px; animation-delay:.5s; }
   .hero-floating:nth-child(3){ bottom:-10px; left:-40px; animation-delay:2s; }
@@ -272,7 +274,7 @@
   .reveal{ opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s cubic-bezier(.4,0,.2,1); }
   .reveal.show{ opacity:1; transform:translateY(0); }
 
-  .mobile-overlay{ position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:150; opacity:0; pointer-events:none; transition:opacity .35s; }
+  .mobile-overlay{ position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:95; opacity:0; pointer-events:none; transition:opacity .35s; }
   .mobile-overlay.show{ opacity:1; pointer-events:all; }
 
   /* ─── Dokumentasi ─── */
