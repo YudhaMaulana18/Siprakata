@@ -38,6 +38,9 @@ build/
 flutter_siprakata/build/
 flutter_siprakata/.dart_tool/
 
+# ── Repo terpisah (landingpage) ──
+landing-siprakata/
+
 # ── Artefak build & file internal ──
 siprakata/public/siprakata.apk
 siprakata/public/flutter/
