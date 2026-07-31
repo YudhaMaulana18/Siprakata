@@ -49,6 +49,13 @@
     box-shadow:0 4px 16px rgba(67,56,202,.25);
   }
   .nav-links .btn-login:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(67,56,202,.35); }
+  .nav-links .btn-github{
+    display:inline-flex; align-items:center; gap:7px;
+    color:rgba(255,255,255,.85)!important; padding:9px 18px; border-radius:10px;
+    font-weight:600; font-size:13px; transition:transform .25s,box-shadow .25s,background .25s;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  }
+  .nav-links .btn-github:hover{ transform:translateY(-2px); background:rgba(255,255,255,.12); color:#fff!important; box-shadow:0 8px 24px rgba(0,0,0,.35); }
   .nav-toggle{ display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
   .nav-toggle span{ width:24px; height:2px; background:rgba(255,255,255,.6); border-radius:2px; transition:.3s; }
   @media(max-width:720px){
@@ -462,6 +469,10 @@
       <a href="#tech" onclick="closeNav()">Teknologi</a>
       <a href="#dokumentasi" onclick="closeNav()">Dokumentasi</a>
       <a href="#download" onclick="closeNav()">Download</a>
+      <a href="https://github.com/YudhaMaulana18/Siprakata" target="_blank" rel="noopener" class="btn-github">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 007.86 10.91c.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.57-.29-5.27-1.28-5.27-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 015.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.71 5.41-5.29 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0023.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+        GitHub
+      </a>
       <a href="/login" class="btn-login">Login</a>
     </div>
   </div>
@@ -1323,6 +1334,12 @@ flutter run                    <span class="c-cmt"># emulator / perangkat Androi
         <a href="/flutter" target="_blank" class="btn btn-gold">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 012 2v4m0 0v4m0-4h-4m-8 0h4m0 0v4m0-4V6a2 2 0 012-2h4"/></svg>
           Buka Web App
+        </a>
+      </div>
+      <div class="cta-btns" style="margin-top:22px">
+        <a href="https://github.com/YudhaMaulana18" target="_blank" rel="noopener" class="btn btn-secondary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 007.86 10.91c.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.37-3.87-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.72-1.55-2.57-.29-5.27-1.28-5.27-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 015.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.71 5.41-5.29 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0023.5 12C23.5 5.73 18.27.5 12 .5z"/></svg>
+          @YudhaMaulana18
         </a>
       </div>
       <div class="note">versi android · file .apk · rilis 2026 · membutuhkan android 8+</div>
