@@ -1596,7 +1596,7 @@ flutter run                    <span class="c-cmt"># emulator / perangkat Androi
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           Download APK
         </a>
-        <a href="https://paralysis-shelf-ivory.ngrok-free.dev/login" target="_blank" class="btn btn-gold">
+        <a href="/flutter" class="btn btn-gold">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 4h2a2 2 0 012 2v4m0 0v4m0-4h-4m-8 0h4m0 0v4m0-4V6a2 2 0 012-2h4"/></svg>
           Login Admin/Dosen
         </a>
