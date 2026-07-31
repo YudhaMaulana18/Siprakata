@@ -85,6 +85,8 @@
 
   /* ─── Hero ─── */
   .hero{ min-height:100vh; display:flex; align-items:center; position:relative; z-index:1; padding-top:80px; overflow:hidden; }
+  .hero .container{ min-width:0; }
+  .hero-grid > *{ min-width:0; }
   .hero-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
   @media(max-width:860px){ .hero-grid{ grid-template-columns:1fr; text-align:center; } }
   .hero h1{
@@ -490,7 +492,7 @@
   .license-box .lic-name{ font-family:'Plus Jakarta Sans',sans-serif; font-size:18px; font-weight:800; }
   .license-box p{ font-size:13.5px; color:rgba(235,229,240,.55); line-height:1.75; margin-bottom:12px; }
   .license-box ul{ padding-left:20px; margin-bottom:12px; }
-  .license-box li{ font-size:13px; color:rgba(235,229,240,.5); line-height:1.75; margin-bottom:6px; }
+  .license-box li{ font-size:13px; color:rgba(235,229,240,.5); line-height:1.75; margin-bottom:6px; overflow-wrap:anywhere; }
   .license-box a{ color:#818CF8; text-decoration:none; }
   .license-box a:hover{ text-decoration:underline; }
 </style>
