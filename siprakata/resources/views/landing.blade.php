@@ -84,7 +84,7 @@
   .section-desc{ color:rgba(235,229,240,.5); font-size:15px; max-width:540px; line-height:1.7; }
 
   /* ─── Hero ─── */
-  .hero{ min-height:100vh; display:flex; align-items:center; position:relative; z-index:1; padding-top:80px; }
+  .hero{ min-height:100vh; display:flex; align-items:center; position:relative; z-index:1; padding-top:80px; overflow:hidden; }
   .hero-grid{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
   @media(max-width:860px){ .hero-grid{ grid-template-columns:1fr; text-align:center; } }
   .hero h1{
@@ -244,8 +244,10 @@
   .tech-badge .t-icon{ font-size:18px; }
 
   /* ─── Roles ─── */
-  .roles{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
-  @media(max-width:720px){ .roles{ grid-template-columns:repeat(2,1fr); } }
+  .roles{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:20px; }
+  .roles-3{ grid-template-columns:repeat(3,minmax(0,1fr)); }
+  @media(max-width:720px){ .roles,.roles-3{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media(max-width:480px){ .roles,.roles-3{ grid-template-columns:minmax(0,1fr); } }
   .role{
     background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06);
     border-radius:16px; padding:28px 20px; text-align:center;
@@ -617,7 +619,7 @@
       </div>
     </div>
 
-    <div class="roles reveal" style="margin-top:40px;grid-template-columns:repeat(3,1fr)">
+    <div class="roles roles-3 reveal" style="margin-top:40px">
       <div class="role"><span class="r-icon">🛡️</span><h4>Admin (Web)</h4><p>Master data, RBAC, log aktivitas, pengaturan sistem</p></div>
       <div class="role"><span class="r-icon">👨‍🏫</span><h4>Dosen (Web)</h4><p>Presensi, nilai, validasi KRS, materi kuliah, pengumuman</p></div>
       <div class="role"><span class="r-icon">🎓</span><h4>Mahasiswa (Mobile)</h4><p>Dashboard, KRS, jadwal, nilai, presensi, materi, fuzzy eval</p></div>
