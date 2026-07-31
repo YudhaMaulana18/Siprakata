@@ -28,23 +28,17 @@ class AuthProvider extends ChangeNotifier {
       final result = await _api.login(email, password);
       if (result['status'] == 'success') {
         final user = AppUser.fromJson(result['data']['user']);
-        if (user.role?.name != 'mahasiswa') {
-          _error = 'Aplikasi ini hanya untuk akun mahasiswa.';
-          _isLoading = false;
-          _isInitialLoading = false;
-          await _api.clearToken();
-          notifyListeners();
-          return false;
-        }
         _user = user;
         _isLoading = false;
         _isInitialLoading = false;
         notifyListeners();
-        if (result['data']['mahasiswa'] != null) {
-          _mahasiswa = Mahasiswa.fromJson(result['data']['mahasiswa']);
-          notifyListeners();
-        } else {
-          await _loadMahasiswaData();
+        if (user.isMahasiswa) {
+          if (result['data']['mahasiswa'] != null) {
+            _mahasiswa = Mahasiswa.fromJson(result['data']['mahasiswa']);
+            notifyListeners();
+          } else {
+            await _loadMahasiswaData();
+          }
         }
         return true;
       } else {
@@ -71,7 +65,9 @@ class AuthProvider extends ChangeNotifier {
       final result = await _api.getMe();
       if (result['status'] == 'success') {
         _user = AppUser.fromJson(result['data']);
-        await _loadMahasiswaData();
+        if (_user!.isMahasiswa) {
+          await _loadMahasiswaData();
+        }
       } else {
         _user = null;
         _mahasiswa = null;

@@ -127,7 +127,7 @@ class _MainNavigationState extends State<MainNavigation> {
                 children: [
                   Text(auth.user?.name ?? '',
                     style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: AppColors.textDark)),
-                  const Text('Mahasiswa', style: TextStyle(fontSize: 10, color: AppColors.textMuted)),
+                  Text(auth.user?.roleLabel ?? 'Mahasiswa', style: const TextStyle(fontSize: 10, color: AppColors.textMuted)),
                 ],
               ),
               const SizedBox(width: 10),
@@ -272,7 +272,7 @@ class _MainNavigationState extends State<MainNavigation> {
                 BoxShadow(color: AppColors.accent.withValues(alpha: 0.35), blurRadius: 14, offset: const Offset(0, 5)),
               ],
             ),
-            child: const Icon(Icons.school_rounded, color: Colors.white, size: 22),
+            child: const Icon(Icons.school, color: Colors.white, size: 22),
           ),
           const SizedBox(width: 12),
           Column(
@@ -397,7 +397,7 @@ class _MainNavigationState extends State<MainNavigation> {
                         BoxShadow(color: AppColors.accent.withValues(alpha: 0.35), blurRadius: 14, offset: const Offset(0, 5)),
                       ],
                     ),
-                    child: const Icon(Icons.school_rounded, color: Colors.white, size: 22),
+                    child: const Icon(Icons.school, color: Colors.white, size: 22),
                   ),
                   const SizedBox(width: 14),
                   Column(

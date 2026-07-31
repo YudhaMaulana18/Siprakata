@@ -22,6 +22,19 @@ class AppUser {
       role: json['role'] != null ? Role.fromJson(json['role']) : null,
     );
   }
+
+  bool get isMahasiswa => role?.name == 'mahasiswa';
+  bool get isAdmin => role?.name == 'admin';
+  bool get isDosen => role?.name == 'dosen';
+  bool get isStaff => isAdmin || isDosen;
+
+  String get roleLabel {
+    final n = role?.name;
+    if (n == 'admin') return 'Administrator';
+    if (n == 'dosen') return 'Dosen';
+    if (n == 'mahasiswa') return 'Mahasiswa';
+    return 'Pengguna';
+  }
 }
 
 class Role {

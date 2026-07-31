@@ -129,7 +129,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                               ],
                             ),
                             child: const Icon(
-                              Icons.school_rounded,
+                              Icons.school,
                               size: 40,
                               color: Colors.white,
                             ),
@@ -277,7 +277,7 @@ class _LoginScreenState extends State<LoginScreen> with SingleTickerProviderStat
                                 borderRadius: BorderRadius.circular(12),
                               ),
                               child: const Icon(
-                                Icons.school_rounded,
+                                Icons.school,
                                 size: 20,
                                 color: Colors.white,
                               ),

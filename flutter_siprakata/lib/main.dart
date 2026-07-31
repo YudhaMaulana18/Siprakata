@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'providers/auth_provider.dart';
 import 'screens/auth/login_screen.dart';
 import 'screens/main_navigation.dart';
+import 'screens/krs/validasi_krs_screen.dart';
 import 'config/app_theme.dart';
 
 void main() {
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Icon(
-                          Icons.school_rounded,
+                          Icons.school,
                           size: 48,
                           color: Colors.white,
                         ),
@@ -68,6 +69,9 @@ class MyApp extends StatelessWidget {
               );
             }
             if (auth.isLoggedIn) {
+              if (auth.user?.isStaff == true) {
+                return const ValidasiKRSScreen();
+              }
               return const MainNavigation();
             }
             return const LoginScreen();

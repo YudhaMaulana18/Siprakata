@@ -31,6 +31,7 @@ class ApiService {
     return {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
+      'ngrok-skip-browser-warning': '1',
       if (t != null) 'Authorization': 'Bearer $t',
     };
   }
@@ -135,6 +136,21 @@ class ApiService {
 
   Future<Map<String, dynamic>> getKRSDetail(int id) async {
     return await get('krs/$id');
+  }
+
+  Future<Map<String, dynamic>> getKRSValidasi(int id) async {
+    return await get('krs/$id/validasi');
+  }
+
+  Future<Map<String, dynamic>> prosesValidasiKRS({
+    required int id,
+    required String statusValidasi,
+    String? catatan,
+  }) async {
+    return await put('krs/$id/proses-validasi', body: {
+      'status_validasi': statusValidasi,
+      if (catatan != null && catatan.isNotEmpty) 'catatan_validasi': catatan,
+    });
   }
 
   Future<Map<String, dynamic>> createKRS({

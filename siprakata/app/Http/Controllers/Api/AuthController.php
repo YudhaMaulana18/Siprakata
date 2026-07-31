@@ -27,14 +27,6 @@ class AuthController extends Controller
             ], 401);
         }
 
-        if (!$user->isMahasiswa()) {
-            return response()->json([
-                'status'  => 'error',
-                'message' => 'Aplikasi ini hanya untuk akun mahasiswa.',
-                'data'    => null,
-            ], 403);
-        }
-
         $token = $user->createApiToken('mobile');
 
         return response()->json([
