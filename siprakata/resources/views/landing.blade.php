@@ -1576,7 +1576,8 @@ flutter run                    <span class="c-cmt"># emulator / perangkat Androi
     <div class="roles">
       <div class="role reveal"><span class="r-icon">🐙</span><h4>GitHub</h4><p><a href="https://github.com/YudhaMaulana18" target="_blank" rel="noopener">@YudhaMaulana18</a></p></div>
       <div class="role reveal" style="transition-delay:.1s"><span class="r-icon">📦</span><h4>Repositori</h4><p><a href="https://github.com/YudhaMaulana18/Siprakata" target="_blank" rel="noopener">YudhaMaulana18/Siprakata</a></p></div>
-      <div class="role reveal" style="transition-delay:.2s"><span class="r-icon">🚩</span><h4>Laporkan Masalah</h4><p><a href="https://github.com/YudhaMaulana18/Siprakata/issues" target="_blank" rel="noopener">GitHub Issues</a></p></div>
+      <div class="role reveal" style="transition-delay:.2s"><span class="r-icon">📸</span><h4>Instagram</h4><p><a href="https://www.instagram.com/yudhamlnaa_" target="_blank" rel="noopener">@yudhamlnaa_</a></p></div>
+      <div class="role reveal" style="transition-delay:.3s"><span class="r-icon">🚩</span><h4>Laporkan Masalah</h4><p><a href="https://github.com/YudhaMaulana18/Siprakata/issues" target="_blank" rel="noopener">GitHub Issues</a></p></div>
     </div>
   </div>
 </section>
