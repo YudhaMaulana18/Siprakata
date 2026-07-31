@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _nilaiCount = 0;
   int _materiCount = 0;
   int _pengumumanCount = 0;
+  int _kelayakanCount = 0;
   bool _isLoading = true;
 
   @override
@@ -43,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
         _api.getPresensiList(),
         _api.getNilaiList(),
         _api.getMateriList(),
+        _api.getKelayakanList(),
       ]);
 
       if (mounted) {
@@ -53,6 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
           final presensiRes = results[3];
           final nilaiRes = results[4];
           final materiRes = results[5];
+          final kelayakanRes = results[6];
 
           if (pengumumanRes['status'] == 'success' && pengumumanRes['data'] != null) {
             final list = (pengumumanRes['data'] as List)
@@ -80,6 +83,9 @@ class _HomeScreenState extends State<HomeScreen> {
           }
           if (materiRes['status'] == 'success' && materiRes['data'] != null) {
             _materiCount = (materiRes['data'] as List).length;
+          }
+          if (kelayakanRes['status'] == 'success' && kelayakanRes['data'] != null) {
+            _kelayakanCount = (kelayakanRes['data'] as List).length;
           }
           _isLoading = false;
         });
@@ -179,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<String> get _statValues => [
     '$_krsCount', '$_totalSks', '$_jadwalCount', '$_presensiCount',
-    '$_nilaiCount', '$_materiCount', '$_pengumumanCount', '-',
+    '$_nilaiCount', '$_materiCount', '$_pengumumanCount', '$_kelayakanCount',
   ];
 
   Widget _buildStatGrid() {
