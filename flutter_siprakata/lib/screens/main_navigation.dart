@@ -5,6 +5,7 @@ import '../providers/auth_provider.dart';
 import 'home/home_screen.dart';
 import 'jadwal/jadwal_screen.dart';
 import 'krs/krs_screen.dart';
+import 'krs/validasi_krs_screen.dart';
 import 'nilai/nilai_screen.dart';
 import 'presensi/presensi_screen.dart';
 import 'materi/materi_screen.dart';
@@ -31,6 +32,7 @@ class _MainNavigationState extends State<MainNavigation> {
     MateriScreen(noScaffold: true),
     PengumumanScreen(noScaffold: true),
     KelayakanScreen(noScaffold: true),
+    ValidasiKRSScreen(noScaffold: true),
   ];
 
   static const List<String> _pageTitles = [
@@ -42,6 +44,7 @@ class _MainNavigationState extends State<MainNavigation> {
     'Materi Kuliah',
     'Pengumuman',
     'Prediksi Kelayakan',
+    'Validasi KRS',
   ];
 
   static const List<IconData> _pageIcons = [
@@ -53,6 +56,7 @@ class _MainNavigationState extends State<MainNavigation> {
     Icons.menu_book_rounded,
     Icons.campaign_rounded,
     Icons.analytics_rounded,
+    Icons.verified_user_rounded,
   ];
 
   @override
@@ -237,6 +241,10 @@ class _MainNavigationState extends State<MainNavigation> {
               padding: EdgeInsets.zero,
               children: [
                 _sidebarItem(0, Icons.home_outlined, Icons.home_rounded, 'Dashboard'),
+                if (auth.user?.isStaff == true) ...[
+                  _sidebarSection('Manajemen'),
+                  _sidebarItem(8, Icons.verified_user_outlined, Icons.verified_user_rounded, 'Validasi KRS'),
+                ],
                 _sidebarSection('Kegiatan Belajar'),
                 _sidebarItem(2, Icons.assignment_outlined, Icons.assignment_rounded, 'Transaksi KRS'),
                 _sidebarItem(1, Icons.calendar_view_week_outlined, Icons.calendar_view_week_rounded, 'Jadwal Kuliah'),
@@ -415,6 +423,10 @@ class _MainNavigationState extends State<MainNavigation> {
                 padding: EdgeInsets.zero,
                 children: [
                   _drawerItem(0, Icons.home_rounded, 'Dashboard'),
+                  if (auth.user?.isStaff == true) ...[
+                    _drawerSection('Manajemen'),
+                    _drawerItem(8, Icons.verified_user_rounded, 'Validasi KRS'),
+                  ],
                   _drawerSection('Kegiatan Belajar'),
                   _drawerItem(2, Icons.assignment_rounded, 'Transaksi KRS'),
                   _drawerItem(1, Icons.calendar_view_week_rounded, 'Jadwal Kuliah'),
